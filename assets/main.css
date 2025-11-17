@@ -3,7 +3,7 @@
 /*
 -----------------------------------------------
 Author:     Christian Hamann
-Version:    12 November 2025
+Version:    17 November 2025
 ----------------------------------------------- */
 
 
@@ -417,6 +417,12 @@ button:focus {
   height: 44.4px !important;
 }
 
+
+.btn:hover .btn_outer {
+  background-color: color-mix(in srgb, var(--theme-black) 80%, blue);
+}
+
+
 .btn_outer {
   position: relative;
   overflow: hidden;
@@ -493,7 +499,7 @@ table {
 }
 
 table.big td {
-  padding: 1rem;
+  padding: 1.25rem 0 1.25rem 1rem;
 }
 
 table.big td.big {
@@ -511,8 +517,8 @@ tr {
 
 th {
   text-transform: uppercase;
-  font-size: 80%;
-  letter-spacing: 1px;
+  font-size: 75%;
+  letter-spacing: 2px;
   padding: 0 0 1.25rem 0.75rem;
   font-weight: bold;
   left: 5px;
@@ -530,40 +536,46 @@ td {
   padding: 0.5rem;
 }
 
+tbody tr {
+  transition: background-color 1s ease; 
+}
+
 tbody tr:hover {
-  color: white;
-  border-radius: 10px;
+  transition: background-color 0s ease; 
+  background-color: color-mix(in srgb, white 75%, transparent);
 }
 
-tbody tr:hover td {
-  background-color: var(--theme-black);
-  border: 1px dotted white;
+tbody tr td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
-tbody tr:hover td:first-child {
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
+tbody tr td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
-tbody tr:hover td:last-child {
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
+tbody tr:last-child td {
+  border-bottom: none;
 }
+tbody tr a.link__arrow {
+  opacity: 0.85;
+  transition: all .1s ease; 
+}
+
+tbody tr:hover a.link__arrow {
+  opacity: 1;
+}
+
 
 tbody tr a.link__arrow svg {
   opacity: 0.5;
+  transition: all .1s ease; 
 }
 
 tbody tr:hover a.link__arrow svg {
   opacity: 1;
   transform: translateX(0.5em);
-  transition: all .1s;
-}
-
-.works-table::after {
-  content: "";
-  display: inline-block;
-  height: 24px;
 }
 
 
