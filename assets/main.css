@@ -419,7 +419,15 @@ button:focus {
 
 
 .btn:hover .btn_outer {
-  background-color: color-mix(in srgb, var(--theme-black) 80%, blue);
+  background-color: var(--theme-black);
+  background-image: linear-gradient(rgba(0, 0, 255, 0.2), rgba(0, 0, 255, 0.2));
+}
+
+@supports (background-color: color-mix(in srgb, black, white)) {
+  .btn:hover .btn_outer {
+    background-color: color-mix(in srgb, var(--theme-black) 80%, blue);
+    background-image: none;
+  }
 }
 
 
