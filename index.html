@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <title>🎾 Christian Hamann: Designer / Developer</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Christian Hamann is a designer and developer" />
-  <link rel="stylesheet" type="text/css" href="assets/main.css?v=1.23" />
+  <link rel="stylesheet" type="text/css" href="assets/main.css?v=1.25" />
   <link rel="icon" href="favicon.png">
   <meta name="theme-color" content="#273052">
 </head>
@@ -41,8 +41,8 @@
           <button id="btn-start" class="btn">
           <div class="btn_outer">
               <div class="btn_text-group">
-                  <span class="btn_text">Click <span class="m-hide">me</span></span>
-                  <span class="btn_text-roll" aria-hidden="true">Click <span class="m-hide">me</span></span>
+                  <span class="btn_text select-none">Click <span class="m-hide">me</span></span>
+                  <span class="btn_text-roll select-none" aria-hidden="true">Click <span class="m-hide">me</span></span>
               </div>
           </div>
         </button>
@@ -54,16 +54,25 @@
     <div class="root_column">
       <section>
         <h2 class="own">Design + Dev<span class="m-hide">elopment</span> = <span class="emo heart">💙</span></h2>
-        <p class="intro">With 20+ years of experience, from the early days of the web­master to today’s UI/UX frame­works, I bring together visual clarity and technical precision to build things that create <span class="nowrap">lasting value.</span></p>
+        <p class="intro">With decades of experience, from the early days of the web­master to today’s UI/UX frame­works, I unite visual clarity and technical precision to build things that create <span class="nowrap">lasting value.</span></p>
         <p class="intro">My process is hands-on. I design directly in code, test early <span class="nowrap">and refine</span> through use. Clarity, accessibility and maintainability guide my work.</p>
         <br>
+        <p> 
+          <span class="rounded bg-off-white p-0 inline-block">&nbsp; <span class="emo flash">⚡</span> Faster Iteration &nbsp;</span>&nbsp;&nbsp;<br class="d-hide"><br class="d-hide">
+          <span class="rounded bg-off-white p-0 inline-block">&nbsp; <span class="emo brain">🧠</span> Holistic Thinking &nbsp;</span>&nbsp;&nbsp;<br class="d-hide"><br class="d-hide">
+          <span class="rounded bg-off-white p-0 inline-block">&nbsp; <span class="emo mic">🎤</span> Efficient Communication &nbsp;</span>
+        </p>
+        <br><br>
       </section>
     </div>   
   </div>
 
-  <div class="root_row bg-white">
-    <div class="root_column">     
+  <div class="root_row">
+    <div class="root_column no-border">     
       <div id="bounce-container" class="canvas" aria-hidden="true">
+        <!--div class="absolute">
+          <h2>Look what I can do for you</h2>
+        </div-->
       </div>
     </div>   
   </div>
@@ -73,33 +82,34 @@
       <section>
         <h2 class="own">Work samples</h2>
         <p class="intro">I’ve shipped <span class="emo h100">💯</span> of websites over the years. Most have changed, gone offline or evolved. The projects below are a curated few. <span class="nowrap">A clear</span> example of my approach to code and design.</p> 
-        
-        <div class="p-2 bg-off-green box rounded works-table">
+        <br>
+
+        <div class="p-2 bg-off-white box rounded works-table">
         <table class="big">
           <thead>
-              <th aria-label="URL of website">Site</th>
-              <th class="m-hide">Type</th>
-              <th>Stack</th>
+              <th aria-label="URL of website"><kbd>Site</kbd></th>
+              <th class="m-hide"><kbd>Type</kbd></th>
+              <th><kbd>Stack</kbd></th>
             </tr>
           </thead>
           <tbody>
             <tr class="clickable">
-              <td class="big"><a target="_blank" class="link_external link_muted link__arrow" href="https://www.turnfriendly.com/"><svg xmlns="http://www.w3.org/2000/svg" width="37.5" height="21" class="icon-arrow-right m-hide" viewBox="0 0 37.5 21"><path d="M37 11V9l-9-8h-2v2l6 6H2l-1 2 1 1h30l-6 6v2h2l9-8v-1z"></path></svg>  TurnFriendly</a></td>
+              <td class="big"><a target="_blank" class="link_external link_muted link_badge" href="https://www.turnfriendly.com/"><div class="batch_icon">TF</div><span class="batch_label">TurnFriendly</span></a></td>
               <td class="m-hide">B2B-Website</td>
               <td>Static site, HTML, SASS</td>
             </tr>
             <tr class="clickable">
-              <td class="big"><a target="_blank" class="link_external link_muted link__arrow" href="https://heredit-ars.de/"><svg xmlns="http://www.w3.org/2000/svg" width="37.5" height="21" class="icon-arrow-right m-hide" viewBox="0 0 37.5 21"><path d="M37 11V9l-9-8h-2v2l6 6H2l-1 2 1 1h30l-6 6v2h2l9-8v-1z"></path></svg> Heredit Ars</a></td>
+              <td class="big"><a target="_blank" class="link_external link_muted link_badge" href="https://heredit-ars.de/"><div class="batch_icon">AH</div><span class="batch_label">Heredit Ars</span></a></td>
               <td class="m-hide">Artist heritage foundation</td>
               <td>Wordpress, Laytheme</td>
             </tr>
             <tr class="clickable">
-              <td class="big"><a target="_blank" class="link_external link_muted link__arrow" href="http://monka.de/"><svg xmlns="http://www.w3.org/2000/svg" width="37.5" height="21" class="icon-arrow-right m-hide" viewBox="0 0 37.5 21"><path d="M37 11V9l-9-8h-2v2l6 6H2l-1 2 1 1h30l-6 6v2h2l9-8v-1z"></path></svg> M. Wesseling</a></td>
-              <td class="m-hide">Journalist</td>
+              <td class="big"><a target="_blank" class="link_external link_muted link_badge" href="http://monka.de/"><div class="batch_icon">MK</div><span class="batch_label">Monka</span></a></td>
+              <td class="m-hide">Journalist M. Wesseling</td>
               <td>Kirby CMS</td>
             </tr>
             <tr class="clickable">
-              <td class="big"><a target="_blank" class="link_external link_muted link__arrow" href="https://github.com/h2hamann/christianhamann.info"><svg xmlns="http://www.w3.org/2000/svg" width="37.5" height="21" class="icon-arrow-right m-hide" viewBox="0 0 37.5 21"><path d="M37 11V9l-9-8h-2v2l6 6H2l-1 2 1 1h30l-6 6v2h2l9-8v-1z"></path></svg> This website</a></td>
+              <td class="big"><a target="_blank" class="link_external link_muted link_badge" href="https://github.com/h2hamann/christianhamann.info"><div class="batch_icon">CH</div><span class="batch_label">This website</span></a></td>
               <td class="m-hide">Portfolio</td>
               <td>HTML, CSS, vue.js, p5.js</td>
             </tr>
@@ -110,20 +120,6 @@
       </section>
     </div>   
   </div>
-  <div class="root_row bg-white">
-    <div class="root_column column_full">
-      <div class="root_content root_content_two-cols m-one-col">
-        
-        <div class="col">
-          <div id="ball-container" class="canvas" aria-hidden="true"></div>
-        </div>
-        <div class="col m-hide">
-          <section class="centered">&nbsp; </section>
-        </div>  
-      
-      </div>
-    </div>   
-  </div>
 
   <div class="root_row bg-white">
     <div class="root_column">
@@ -132,12 +128,11 @@
         <p class="intro">My work starts with analysis and structure and ends with an interface that simply works.</p>
         
         <ul class="intro list list-swap" aria-live="polite">
-          <li>To me code is <s class="muted m-hide">not just functional but also</s> clear, maintainable and built to last.</li>
-          <li>And design is <s class="muted m-hide">not decoration but</s> a conceptual tool that creates orientation, reduces friction and guides users.</li>
+          <li>To me code is clear, maintainable and built to last.</li>
+          <li>And design is a conceptual tool that creates orientation, reduces friction and guides users.</li>
         </ul>
           
         <figure aria-hidden="true" class="centered"><img src="assets/img/ego-wise.png" class="rounded ego" alt="" aria-hidden="true"></figure>
-
       </section>
     </div>   
   </div>
@@ -146,13 +141,14 @@
     <div class="root_column">
       <section>
         <h2 class="own">Say hi</h2>
-        <p class="intro">I’m always happy to hear from people who care about design and technology.</p>
+        <p class="intro">Thank you for your interest in my work.</p>
+        <p class="intro">I’m always happy to hear from people who care about <span class="nowrap">design and technology.</span></p>
 
         <a class="btn" href="mailto:desk@christianhamann.info.com?subject=Hello%20world">
           <div class="btn_outer">
               <div class="btn_text-group">
-                  <span class="btn_text">Get in touch</span>
-                  <span class="btn_text-roll" aria-hidden="true">Get in touch</span>
+                  <span class="btn_text select-none">Get in touch</span>
+                  <span class="btn_text-roll select-none" aria-hidden="true">Get in touch</span>
               </div>
           </div>
         </a>
@@ -166,6 +162,13 @@
   </div>
 
   <div class="root_row bg-white">
+    <div class="root_column">     
+      <div id="ball-container" class="canvas" aria-hidden="true">
+      </div>
+    </div>   
+  </div>
+
+  <div class="root_row bg-white">
     <div class="root_column">
       <section class="copyright">
           <br>
@@ -173,7 +176,7 @@
                 var d = new Date();
                 var year = d.getFullYear();
                 document.write(year);
-                </script> · Website Version 1.23 · <span class="nowrap">Early public beta 🎾</span></small></p>
+                </script> · Website Version 1.25 · <span class="nowrap">Public beta 🎾</span></small></p>
       </section>
     </div>   
   </div>
@@ -187,9 +190,9 @@
 <!--script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/2.0.3/p5.min.js"></script-->
 <script src="assets/js/vendor/p5.js"></script>
 
-<script src="assets/js/blick.js?v=1.23"></script>
-<script src="assets/js/bounce.js?v=1.23"></script>
-<script src="assets/js/ball.js?v=1.23"></script>
+<script src="assets/js/blick.js?v=1.25"></script>
+<script src="assets/js/bounce.js?v=1.25"></script>
+<script src="assets/js/ball.js?v=1.25"></script>
 
 
 

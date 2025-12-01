@@ -3,7 +3,7 @@
 /*
 -----------------------------------------------
 Author:     Christian Hamann
-Version:    17 November 2025
+Version:    30 November 2025
 ----------------------------------------------- */
 
 
@@ -11,13 +11,14 @@ Version:    17 November 2025
    1. BASIS & RESET
    ============================================ */
 
-body, h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, li, table, tr, th, td, form, figure {
+body, h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, li, table, tr, th, td, form, figure, cite {
   margin: 0; 
   padding: 0; 
   border: 0; 
   list-style: none; 
   font-size: 100%; 
   font-weight: normal;
+  font-style: normal;
 }
 
 img { 
@@ -47,29 +48,32 @@ html {
    ============================================ */
 
 :root {
-  /* Colors */
-  --theme-border: #ddd;
+  --theme-border: #dddddd;
   --theme-black: #080b15;
   --theme-off-black: #212125;
   --theme-grey: #e2e3dc;
-  --theme-yellow: #ff3;
+  --theme-yellow: #ffff33; 
   --theme-purple: #033dff;
   --theme-blue-grey: #c8d1cf;
-  --theme-off-white: #ece7db;
+  --theme-off-white: #f4f2f3;
   --theme-off-green: #faf7f0;
   --theme-dark-green: #293c20;
+  --theme-ash-grey: #a8b7ab;
+  --theme-tiger-red: #ff5714;
+  --theme-tomato-red: #f55d3e;
+  --theme-dust-grey: #eadeda;
+  --theme-indigo-black: #2e294e;
+  --theme-dusty-olive: #657153;
+  --theme-oxford-navy: #12355b;
 
-  /* Layout */
   --layout-column-width: 768px;
-
-  /* Spacing */
   --spacing: 12px;
 }
 
 #canvas-container,
 #bounce-container,
 #ball-container {
-  --ball-color: #ff3; 
+  --ball-color: var(--theme-yellow);
 }
 
 
@@ -220,6 +224,7 @@ p, .list {
 }
 
 
+
 /* --- Lists --- */
 
 section ul.list {
@@ -298,6 +303,14 @@ section ul.list li {
 .align-right {
   text-align: right;
 }
+
+.select-none {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 
 
 /* ============================================
@@ -393,6 +406,37 @@ footer {
 .root_content_three-cols > *:nth-child(n+4) {
   border-top: 1px solid var(--theme-border);
 }
+
+
+
+
+.link_badge {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+.batch_icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  background: var(--theme-black);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: -0.25px;
+  margin-right: 18px;
+  flex-shrink: 0;
+}
+
+.batch_label {}  
+
 
 
 /* ============================================
@@ -515,16 +559,18 @@ tr {
   display: table-row;
 }
 
+
 th {
   text-transform: uppercase;
-  font-size: 75%;
+  font-size: 100%;
   letter-spacing: 2px;
   padding: 0 0 1.25rem 0.75rem;
   font-weight: bold;
   left: 5px;
   position: relative;
-  border-bottom: 1px dotted color-mix(in srgb, currentColor 50%, transparent);
+  border-bottom: 1px solid var(--theme-border);
 }
+
 
 th, td {
   display: table-cell;
@@ -532,9 +578,10 @@ th, td {
 }
 
 td {
-  border-bottom: 1px dotted color-mix(in srgb, currentColor 50%, transparent);
+  border-bottom: 1px solid var(--theme-border);
   padding: 0.5rem;
 }
+
 
 tbody tr {
   transition: background-color 1s ease; 
@@ -642,6 +689,10 @@ section figure {
   }
 }
 
+cite .photo img {
+  max-width: 60px;
+}
+
 
 /* --- Icons --- */
 
@@ -698,14 +749,15 @@ section figure {
   color: var(--theme-dark-green);
 }
 
+
+
 .bg-purple {
   background-color: var(--theme-purple);
   color: white;
 }
 
 .bg-grey *,
-.bg-blue-grey *,
-.bg-off-white * {
+.bg-blue-grey * {
   border-color: white !important;
 }
 
@@ -731,13 +783,28 @@ section figure {
 
 
 /* --- Spacing --- */
+.p-0 {
+  padding: calc(var(--spacing) * 0.5);
+}
+
+.p-1 {
+  padding: calc(var(--spacing) * 1);
+}
 
 .p-2 {
   padding: calc(var(--spacing) * 2);
 }
 
+.p-3 {
+  padding: calc(var(--spacing) * 3);
+}
+
 .p-4 {
   padding: calc(var(--spacing) * 4);
+}
+
+.p-5 {
+  padding: calc(var(--spacing) * 5);
 }
 
 .p-6 {
@@ -752,7 +819,8 @@ section figure {
 /* --- Borders & Shapes --- */
 
 .rounded {
-  border-radius: 1.5rem;
+  border-radius: 1.5em;
+  /*border-radius: clamp(1.5em, 5vw, 2.5em);*/
 }
 
 .pill {
@@ -770,6 +838,10 @@ section figure {
 
 
 /* --- Positioning --- */
+
+.absolute {
+  position: absolute;
+}
 
 .relative {
   position: relative;
@@ -791,6 +863,18 @@ section figure {
   cursor: pointer;
 }
 
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.gap-4 {
+  gap: 1rem; 
+}
+
 
 /* --- Emoji Utilities --- */
 
@@ -808,6 +892,10 @@ section figure {
   display: inline-block;
   margin-left: 7px;
   margin-right: 14px;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 
@@ -832,6 +920,62 @@ section figure {
 @keyframes blink {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
+}
+
+
+
+.comic-text-css {
+  position: absolute;
+  top: -33px;
+  left: 27%;
+  transform: translateX(-50%) rotate(-3deg);
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 0.195em;
+  color: #fff;
+  
+  --text-shadow-color: #83bf4e;
+
+  text-shadow:
+    4px 4px 0 var(--text-shadow-color),
+    -2px -2px 0 var(--text-shadow-color),
+    2px -2px 0 var(--text-shadow-color),
+    -2px 2px 0 var(--text-shadow-color),
+    2px 2px 0 var(--text-shadow-color),
+    12px 12px 0 var(--theme-off-green);
+
+  z-index: 10;
+}
+
+.comic-text-css .dreh {
+  display: inline-block; 
+}
+
+.dreh {
+    --i: 0;
+    transform: translateY(calc(var(--i) *-4%)) rotate(calc(var(--i) *5deg));
+
+    /* Opacity: 1 - ((Index - 1) * 0.1) */
+    opacity: calc(1 - (var(--i) - 1) * 0.125);
+
+}
+
+
+.stroked {
+  color: transparent;
+  -webkit-text-stroke-color: var(--theme-border);
+  text-stroke-color: var(--theme-border);
+  -webkit-text-stroke-width: 1px;
+  text-stroke-width: 1px;
+}
+
+.rose {
+  position: absolute;
+  bottom: 15%;
+  right: 30%;
+  font-size: 3.75rem;
+  transform: rotate(30deg);
+  z-index: 10;
 }
 
 

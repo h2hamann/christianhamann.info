@@ -1,23 +1,31 @@
 const ballBounce = (p) => {
+    // Konstanten
+    const BALL_RADIUS = 25;
+    const BALL_DIAMETER = 50;
+    const INITIAL_Y = -250;
+    const INITIAL_Y_SPEED = 0;
+    const GRAVITY = 0.75;
+    const DAMPING = 0.75;
+    const MIN_BOUNCE_HEIGHT = 8;
+    const MAX_SMALL_BOUNCES = 6;
+    const REST_DURATION = 120; // Pause vor dem Versinken
+    const SINK_DURATION = 60; // Dauer des Versinkens
+    const SINK_SPEED = 1.5;
+    
+    // Zustandsvariablen
     let x;
     let y;
-    let ySpeed = 10000;
-    let gravity = 0.75;
-    let damping = 0.75;
+    let ySpeed;
     let canvas;
-    let restTime = 0;
-    let restDuration = 120; // Pause vor dem Versinken
-    let sinkDuration = 60; // Dauer des Versinkens
-    let isResting = false;
-    let isSinking = false;
-    let minBounceHeight = 8;
+    let animationState = 'bouncing'; // 'bouncing', 'resting', 'sinking'
+    let stateTimer = 0;
     let smallBounces = 0;
-    let maxSmallBounces = 6;
     let isAnimating = false;
     let ballColor;
     
     p.setup = function() {
         let container = document.getElementById('bounce-container');
+        // Canvas mit transparentem Hintergrund erstellen
         canvas = p.createCanvas(container.offsetWidth, container.offsetHeight);
         canvas.parent('bounce-container');
         canvas.id('bounce-canvas');
@@ -40,11 +48,10 @@ const ballBounce = (p) => {
     
     function resetBall() {
         x = p.width / 2;
-        y = -250;
-        ySpeed = 0;
-        isResting = false;
-        isSinking = false;
-        restTime = 0;
+        y = INITIAL_Y;
+        ySpeed = INITIAL_Y_SPEED;
+        animationState = 'bouncing';
+        stateTimer = 0;
         smallBounces = 0;
     }
     
@@ -60,63 +67,66 @@ const ballBounce = (p) => {
     p.stopAnimation = function() {
         isAnimating = false;
         p.noLoop();
-        p.background(255);
+        p.clear(); // Transparent statt schwarzem Hintergrund
     }
     
     p.resetAnimation = function() {
         isAnimating = false;
         p.noLoop();
         resetBall();
-        p.background(255);
+        p.clear(); // Transparent statt schwarzem Hintergrund
+    }
+    
+    function updateBallPhysics() {
+        y += ySpeed;
+        ySpeed += GRAVITY;
+        
+        if (y > p.height - BALL_RADIUS) {
+            y = p.height - BALL_RADIUS;
+            
+            if (Math.abs(ySpeed) < MIN_BOUNCE_HEIGHT) {
+                smallBounces++;
+                
+                if (smallBounces >= MAX_SMALL_BOUNCES) {
+                    ySpeed = 0;
+                    animationState = 'resting';
+                    y = p.height - BALL_RADIUS;
+                } else {
+                    ySpeed *= -DAMPING;
+                }
+            } else {
+                ySpeed *= -DAMPING;
+            }
+        }
     }
     
     p.draw = function() {
         if (!isAnimating) return;
         
-        p.background(255); 
+        p.clear(); // Transparent statt p.background(0)
         
-        if (isSinking) {
+        if (animationState === 'sinking') {
             // Ball versinkt langsam nach unten
-            restTime++;
-            y += 1.5; // Versink-Geschwindigkeit
+            stateTimer++;
+            y += SINK_SPEED;
             
-            if (restTime >= sinkDuration || y > p.height + 50) {
+            if (stateTimer >= SINK_DURATION || y > p.height + 50) {
                 resetBall(); // Animation neu starten
             }
-        } else if (isResting) {
+        } else if (animationState === 'resting') {
             // Ball ruht am Boden
-            restTime++;
-            if (restTime >= restDuration) {
-                isSinking = true;
-                restTime = 0; // Timer für Versink-Phase zurücksetzen
+            stateTimer++;
+            if (stateTimer >= REST_DURATION) {
+                animationState = 'sinking';
+                stateTimer = 0;
             }
-        } else {
-            // Ball-Animation
-            y += ySpeed;
-            ySpeed += gravity;
-            
-            if (y > p.height - 25) {
-                y = p.height - 25;
-                
-                if (Math.abs(ySpeed) < minBounceHeight) {
-                    smallBounces++;
-                    
-                    if (smallBounces >= maxSmallBounces) {
-                        ySpeed = 0;
-                        isResting = true;
-                        y = p.height - 25;
-                    } else {
-                        ySpeed *= -damping;
-                    }
-                } else {
-                    ySpeed *= -damping;
-                }
-            }
+        } else { // 'bouncing'
+            updateBallPhysics();
         }
         
         p.fill(ballColor); 
         p.strokeWeight(0);
-        p.ellipse(x, y, 50, 50);
+        p.ellipse(x, y, BALL_DIAMETER, BALL_DIAMETER);
     }
     
     p.windowResized = function() {
