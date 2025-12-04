@@ -260,7 +260,7 @@ section ul.list-pin li::before {
 }
 
 section ul.list li {
-  margin-bottom: .5em;
+  margin-bottom: 20px;
 }
 
 .list-swap {
@@ -892,7 +892,6 @@ cite .photo img {
 
 .emo.h100 {
   transform: scale(1.5);
-  display: inline-block;
   margin-left: 7px;
   margin-right: 3px;
   top: 3px;
@@ -901,9 +900,17 @@ cite .photo img {
 
 .emo.hand {
   transform: scale(1.666) rotate(90deg) scaleX(-1);
-  display: inline-block;
   margin-left: 7px;
   margin-right: 14px;
+}
+
+.emo.flash  {
+  transform: scale(1.1);
+}
+
+.emo.mic  {
+  transform: scale(0.9);
+  margin-right: 2px;
 }
 
 .inline-block {
