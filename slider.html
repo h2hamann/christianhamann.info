@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Slider</title>
+    <style>
+
+
+        .rounded {
+            border-radius: 1.5em;
+        }
+
+        .slider-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            height: 500px;
+        }
+
+        .slider-stack {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            max-width: 50%;
+            height: 100%;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .slide.active {
+            left: 0;
+            top: 0;
+            transform: rotate(0deg) scale(1);
+            z-index: 3;
+        }
+
+        .slide.next {
+            top: 5%;
+            left: 1%;
+            transform: rotate(3deg) scale(0.95);
+            z-index: 2;
+        }
+
+        .slide.next-next {
+            top: 10%;
+            left: 3%;
+            transform: rotate(6deg) scale(0.9);
+            z-index: 1;
+        }
+
+        .slide.hidden {
+            left: -100%;
+            opacity: 0;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider-stack" id="stack">
+            <div class="slide rounded">
+                <img src="assets/img/egos/ego-wise-min.png" class="rounded select-none" alt="" aria-hidden="true">
+            </div>
+            <div class="slide rounded">
+                <img src="assets/img/egos/ego-smile-min.png" class="rounded select-none" alt="" aria-hidden="true">
+            </div>           
+            <div class="slide rounded">
+                <img src="assets/img/egos/ego-magic-min.png" class="rounded select-none" alt="" aria-hidden="true">
+            </div>
+            <div class="slide rounded">
+                <img src="assets/img/egos/ego-lasagne-min.png" class="rounded select-none" alt="" aria-hidden="true">
+            </div>
+            <div class="slide rounded"> 
+                <img src="assets/img/egos/ego-mammut-min.png" class="rounded select-none" alt="" aria-hidden="true">
+            </div> 
+            <div class="slide rounded">
+                <img src="assets/img/egos/ego-tuerk-min.png" class="rounded select-none" alt="" aria-hidden="true">
+            </div>
+            <div class="slide rounded">
+                <img src="assets/img/egos/ego-mandarine-min.png" class="rounded select-none" alt="" aria-hidden="true">
+            </div>
+            <div class="slide rounded">
+                <img src="assets/img/egos/ego-cat-min.png" class="rounded select-none" alt="" aria-hidden="true">
+            </div>
+            <div class="slide rounded">
+                <img src="assets/img/egos/ego-windows-min.png" class="rounded select-none" alt="" aria-hidden="true">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function StackSlider(container) {
+            this.container = typeof container === 'string' ? document.querySelector(container) : container;
+            this.slides = Array.prototype.slice.call(this.container.children);
+            this.currentIndex = 0;
+            this.init();
+        }
+
+        StackSlider.prototype.init = function() {
+            var self = this;
+            
+            this.slides.forEach(function(slide, index) {
+                slide.addEventListener('click', function() {
+                    self.next();
+                });
+            });
+
+            this.updatePositions();
+        };
+
+        StackSlider.prototype.updatePositions = function() {
+            var self = this;
+            
+            this.slides.forEach(function(slide, index) {
+                slide.classList.remove('active', 'next', 'next-next', 'hidden');
+                
+                var position = (index - self.currentIndex + self.slides.length) % self.slides.length;
+                
+                if (position === 0) {
+                    slide.classList.add('active');
+                } else if (position === 1) {
+                    slide.classList.add('next');
+                } else if (position === 2) {
+                    slide.classList.add('next-next');
+                } else {
+                    slide.classList.add('hidden');
+                }
+            });
+        };
+
+        StackSlider.prototype.next = function() {
+            this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+            this.updatePositions();
+        };
+
+        var slider = new StackSlider('#stack');
+    </script>
+</body>
+</html>
