@@ -3,7 +3,7 @@
 /*
 -----------------------------------------------
 Author:     Christian Hamann
-Version:    2 Dezember 2025
+Version:    4 Dezember 2025
 ----------------------------------------------- */
 
 
@@ -201,6 +201,10 @@ p, .list {
   line-height: 1.4;
   padding-bottom: 20px;
   max-width: 65ch;     
+}
+
+p + .btn {
+  padding-top: 10px;   
 }
 
 .intro {
