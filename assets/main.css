@@ -239,7 +239,7 @@ section ul.list {
 
 @media only screen and (max-width: 768px) {
   section ul.list {
-    padding-left: 2.1em !important;
+    padding-left: 2.5em !important;
   }
 }
 
@@ -555,7 +555,7 @@ table {
 }
 
 table.big td {
-  padding: 1.25rem 0 1.25rem 1rem;
+  padding: 1rem 0 1rem 1rem;
 }
 
 table.big td.big {
@@ -895,7 +895,6 @@ cite .photo img {
   margin-left: 7px;
   margin-right: 3px;
   top: 3px;
-  position: relative;
 }
 
 .emo.hand {
@@ -906,6 +905,10 @@ cite .photo img {
 
 .emo.flash  {
   transform: scale(1.1);
+}
+
+.emo.brain  {
+  margin-right: 3px;
 }
 
 .emo.mic  {
@@ -1022,6 +1025,13 @@ cite .photo img {
 .slider-container {
   height: 500px;
   padding-bottom: 75px;
+}
+
+@media only screen and (max-width: 768px) {
+  .slider-container {
+    height: 350px;
+    padding-bottom: 50px;
+  }
 }
 
 .slider-stack {
