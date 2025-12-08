@@ -57,3 +57,53 @@ document.querySelectorAll(".clickable").forEach(function(box) {
   });
 });
 
+
+
+function StackSlider(container) {
+    this.container = typeof container === 'string' ? document.querySelector(container) : container;
+    this.slides = Array.prototype.slice.call(this.container.children);
+    this.currentIndex = 0;
+    this.init();
+    }
+
+    StackSlider.prototype.init = function() {
+    var self = this;
+
+    this.slides.forEach(function(slide, index) {
+        slide.addEventListener('click', function() {
+            self.next();
+        });
+    });
+
+    this.updatePositions();
+    };
+
+    StackSlider.prototype.updatePositions = function() {
+    var self = this;
+
+    this.slides.forEach(function(slide, index) {
+        slide.classList.remove('active', 'next', 'next-next', 'hidden');
+        
+        var position = (index - self.currentIndex + self.slides.length) % self.slides.length;
+        
+        if (position === 0) {
+            slide.classList.add('active');
+        } else if (position === 1) {
+            slide.classList.add('next');
+        } else if (position === 2) {
+            slide.classList.add('next-next');
+        } else {
+            slide.classList.add('hidden');
+        }
+    });
+    };
+
+    StackSlider.prototype.next = function() {
+    this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+    this.updatePositions();
+    };
+
+    var slider = new StackSlider('#stack');
+
+
+
