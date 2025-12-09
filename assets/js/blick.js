@@ -78,7 +78,7 @@ const blickSketch = (p) => {
   }
 
   p.draw = function() {
-    p.background(255);
+    p.clear();
     
     let leftX = p.width / 2 - 50;
     let leftY = p.height / 2;
