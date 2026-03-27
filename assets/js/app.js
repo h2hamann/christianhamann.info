@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+const isAppleEmoji = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent);
+if (isAppleEmoji) document.body.classList.add('apple-emoji');
+
+
 function typeText(element, text, index) {
     if (index < text.length) {
         const char = text.charAt(index);

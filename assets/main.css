@@ -3,7 +3,7 @@
 /*
 -----------------------------------------------
 Author:     Christian Hamann
-Version:    8 Dezember 2025
+Version:    27 März 2026
 ----------------------------------------------- */
 
 
@@ -94,6 +94,14 @@ html {
 
 @font-face {
   font-family: 'america';
+  src: url('fonts/gt-america/GT-America-Standard-Regular-Italic.woff2') format('woff2'); 
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap; 
+}
+
+@font-face {
+  font-family: 'america';
   src: url('fonts/gt-america/GT-America-Standard-Medium.woff2') format('woff2'); 
   font-weight: 500;
   font-style: normal;
@@ -107,7 +115,6 @@ html {
   font-style: normal;
   font-display: swap; 
 }
-
 
 /* --- Body & Base Typography --- */
 
@@ -125,19 +132,6 @@ body {
     font-size: 100%;
   }
 }
-
-@media only screen and (min-width: 112.5em) {
-  body {
-    font-size: 125%;
-  }
-}
-
-@media only screen and (min-width: 150em) {
-  body {
-    font-size: 133%;
-  }
-}
-
 
 /* --- Headings --- */
 
@@ -190,7 +184,7 @@ section > .own {
 }
 
 .brand .slash {
-  margin: 0 8px 0 1px;
+  margin: 0 0 0 1px;
   font-weight: normal;
 }
 
@@ -225,9 +219,20 @@ p + .btn {
 }
 
 .leading-tight {
+  line-height: 1.2;
+}
+
+.leading-tighter {
   line-height: 1.05;
 }
 
+.italic {
+  font-style: italic;
+}
+
+q::before {
+  margin-left: -0.45em;
+}
 
 
 /* --- Lists --- */
@@ -548,7 +553,48 @@ button:focus {
 /* --- Tables --- */
 
 .works-table {
-  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  transition: transform 333ms cubic-bezier(.04, .69, .31, .98), 
+              padding 333ms cubic-bezier(.04, .69, .31, .98);
+}
+
+@media only screen and (max-width: 768px) {
+  .works-table {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: calc(var(--spacing) * 4) !important;
+    border-radius: 0 !important;
+  }
+  .works-table thead th:first-child,
+  .works-table tbody tr td:first-child {
+    padding-left: 24px !important;
+  }
+}
+
+@media only screen and (min-width: 767px) {
+  .works-table {
+    border: 1px solid var(--theme-border);
+  }
+  .works-table + .spacer {
+    padding-bottom: calc(var(--spacing) * 2) !important;
+  }
+}
+
+/* Spill the grid*/
+@media only screen and (min-width: 75em) {
+  .works-table {
+    transform: scale(1.1);
+    top: calc(var(--spacing) * 2);
+    position: relative;    
+    xborder: none;
+    padding-left: 8px !important;
+    padding-top: 8px !important;
+    padding-bottom: 16px !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+  }
+  .works-table > table.big {
+    transform: scale(0.9);
+    width: 100%;
+  }
 }
 
 table {
@@ -563,7 +609,7 @@ table.big td {
 }
 
 table.big td.big {
-  font-size: 24px;
+  font-size: 150%;
   line-height: 1;
 }
 
@@ -575,18 +621,13 @@ tr {
   display: table-row;
 }
 
-
 th {
   text-transform: uppercase;
   font-size: 100%;
-  letter-spacing: 2px;
-  padding: 0 0 1.25rem 0.75rem;
-  font-weight: bold;
-  left: 5px;
-  position: relative;
+  letter-spacing: 0.01em;
+  padding: 0 0 1.25rem 1rem; 
   border-bottom: 1px solid var(--theme-border);
 }
-
 
 th, td {
   display: table-cell;
@@ -594,7 +635,7 @@ th, td {
 }
 
 td {
-  border-bottom: 1px dotted var(--theme-border);
+  border-bottom: 1px solid var(--theme-border);
   padding: 0.5rem;
 }
 
@@ -607,9 +648,11 @@ tbody tr:hover {
   background-color: color-mix(in srgb, var(--theme-yellow) 75%, transparent);
 }
 
+/* */
 tbody tr:last-child td {
   border-bottom: none;
 }
+
 
 
 /* --- Canvas / Artboards --- */
@@ -646,7 +689,7 @@ tbody tr:last-child td {
 
 @media only screen and (max-width: 768px) {
   .box {
-    margin: 0 12px 0 12px;
+    margin: 0;
   }
 }
 
@@ -792,6 +835,9 @@ cite .photo img {
 }
 
 @media only screen and (max-width: 768px) {
+  .m-p-2 {
+    padding: calc(var(--spacing) * 2);
+  }
   .m-p-3 {
     padding: calc(var(--spacing) * 3);
   }
@@ -950,15 +996,23 @@ cite .photo img {
   text-stroke-width: 1px;
 }
 
-.rose {
+.rose, .contact-illu .mic {
   position: absolute;
-  bottom: 15%;
-  right: 30%;
-  font-size: 3.75rem;
+  bottom: 12%;
+  right: 15%;
+  font-size: 4rem;
   transform: rotate(30deg);
   z-index: 10;
 }
 
+.contact-illu .mic {
+  transform: rotate(-90deg);
+  font-size: 4rem;
+}
+
+body:not(.apple-emoji) .emo-illu {
+  display: none;
+}
 
 /* ============================================
    8. RESPONSIVE & MEDIA QUERIES
