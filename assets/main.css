@@ -3,7 +3,8 @@
 /*
 -----------------------------------------------
 Author:     Christian Hamann
-Version:    27 März 2026
+Version:    17 Mai 2026
+src-Folder: 19
 ----------------------------------------------- */
 
 
@@ -162,7 +163,7 @@ section > .alone {
 
 section > .own {
   border-bottom: 1px solid var(--theme-border); 
-  margin-bottom: 24px; 
+  margin-bottom: 36px; 
 }
 
 .brand {
@@ -202,8 +203,16 @@ p + .btn {
   padding-top: 10px;   
 }
 
+@media only screen and (min-width: 37.5em) {
+  .d-intro {
+    font-size: 150%;
+    line-height: 1.56;
+  }
+}
+
 .intro {
   font-size: 150%;
+  line-height: 1.56;
 }
 
 .big-font {
@@ -293,6 +302,17 @@ section ul.list li {
 
 /* --- Links --- */
 
+a {
+  color: var(--theme-purple);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  transition: all .3s;
+}
+
+a:hover {
+  color: inherit;
+}
+
 .link_muted {
   color: inherit;
   text-decoration: none;
@@ -368,6 +388,23 @@ footer {
 
 .column_full {
   max-width: 100%;
+}
+
+
+.layout-full-frame .root_column {
+  max-width: 100% !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .layout-full-frame .root_column {
+    max-width: calc(100% - var(--spacing) * 2)!important;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .layout-full-frame .root_column {
+    max-width: calc(100% - var(--spacing) * 4)!important;
+  }
 }
 
 
@@ -802,6 +839,9 @@ cite .photo img {
 
 
 /* --- Spacing --- */
+.no-padding {
+  padding: 0;
+}
 .p-0 {
   padding: calc(var(--spacing) * 0.5);
 }
