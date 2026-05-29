@@ -3,8 +3,8 @@
 /*
 -----------------------------------------------
 Author:     Christian Hamann
-Version:    17 Mai 2026
-src-Folder: 19
+Version:    25 Mai 2026
+src-Folder: 20
 ----------------------------------------------- */
 
 
@@ -318,6 +318,33 @@ a:hover {
   text-decoration: none;
 }
 
+.redacted {
+  padding: 0 2px;
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background-color: white;
+}
+
+.redacted::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translate(-101%);
+  transition: .16s ease-in-out;
+  background-color: yellow;
+  mix-blend-mode: difference;
+}
+
+.redacted:hover::before {
+  transform: translate(0);
+  content: "░";
+}
+
+
+
 
 /* --- Text Utilities --- */
 
@@ -507,19 +534,9 @@ button:focus {
   height: 44.4px !important;
 }
 
-
 .btn:hover .btn_outer {
   background-color: var(--theme-black);
-  background-image: linear-gradient(rgba(0, 0, 255, 0.2), rgba(0, 0, 255, 0.2));
 }
-
-@supports (background-color: color-mix(in srgb, black, white)) {
-  .btn:hover .btn_outer {
-    background-color: color-mix(in srgb, var(--theme-black) 80%, blue);
-    background-image: none;
-  }
-}
-
 
 .btn_outer {
   position: relative;
@@ -532,10 +549,27 @@ button:focus {
   line-height: 0.85;
 }
 
+.btn-small .btn_outer {
+  font-size: 130%;
+}
+
+.btn-inline .btn_outer,
+button.btn-inline {
+  margin-top: -2px;
+}
+
+.btn-small .btn_text-group {
+  padding: 8px 14px;
+}
+
 .btn-secondary .btn_outer {
   background-color: white;
   color: var(--theme-black);
   border: 2px solid;
+}
+
+.btn-secondary:hover .btn_outer {
+  background-color: white;
 }
 
 .btn_text-group {
@@ -585,6 +619,7 @@ button:focus {
   cursor: not-allowed;
   background-color: var(--theme-grey);
 }
+
 
 
 /* --- Tables --- */
@@ -840,7 +875,7 @@ cite .photo img {
 
 /* --- Spacing --- */
 .no-padding {
-  padding: 0;
+  padding: 0 !important;
 }
 .p-0 {
   padding: calc(var(--spacing) * 0.5);
@@ -883,7 +918,17 @@ cite .photo img {
   }
 }
 
+.no-margin {
+  margin: 0 !important;
+}
 
+.mb-1 {
+  margin-bottom: calc(var(--spacing) * 1);
+}
+
+.mb-2 {
+  margin-bottom: calc(var(--spacing) * 2);
+}
 
 
 /* --- Borders & Shapes --- */
@@ -1045,6 +1090,19 @@ cite .photo img {
   z-index: 10;
 }
 
+
+#thanks .emo {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease 0.5s, visibility 1s ease 0.5s;
+}
+
+#thanks.fade-in .emo {
+  opacity: 1;
+  visibility: visible;
+}
+
+
 .contact-illu .mic {
   transform: rotate(-90deg);
   font-size: 4rem;
@@ -1062,11 +1120,17 @@ body:not(.apple-emoji) .emo-illu {
   .m-hide {
     display: none !important;
   }
+  .m-flex {
+    display: flex !important;
+  }
 }
 
 @media only screen and (min-width: 768px) {
   .d-hide {
     display: none !important;
+  }
+  .d-flex {
+    display: flex !important;
   }
 }
 
@@ -1146,4 +1210,45 @@ body:not(.apple-emoji) .emo-illu {
   opacity: 0;
   z-index: 0;
 }
+
+
+
+.pill {
+  display: inline-block;
+  background: transparent;
+  color: var(--theme-black);
+  border: 2px solid var(--theme-black);
+  padding: 2px 10px 2px 10px;
+  border-radius: 25px;
+  font-size: 24px;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 0.85;
+  font-style: normal;
+  transition: background-color 0.3s ease;
+}
+
+.pill:hover {
+  transition: background-color 0s ease;
+  background-color: color-mix(in srgb, var(--theme-yellow) 75%, transparent);
+}
+
+.pill.is-final {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

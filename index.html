@@ -6,7 +6,7 @@
   <title>🎾 Christian Hamann: Designer / Developer</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Christian Hamann is a designer and developer" />
-  <link rel="stylesheet" type="text/css" href="assets/main.css?v=1.31" />
+  <link rel="stylesheet" type="text/css" href="assets/main.css?v=1.32" />
   <link rel="icon" href="favicon.png">
   <meta name="theme-color" content="#273052">
 </head>
@@ -80,7 +80,7 @@
   <div class="root_row bg-white">
     <div class="root_column">
       <section>
-        <h2 class="own">Work samples</h2>
+        <h2 class="own">Selected WWW Projects</h2>
         <p class="intro">I’ve shipped <span class="inline-block emo h100">💯</span> of websites over the years. Most changed, evolved or gone offline. The projects below are a curated few. <span class="nowrap">A clear</span> example of my approach to code and design.</p> 
 
         <div class="p-2 bg-white box rounded works-table">
@@ -123,12 +123,12 @@
   <div class="root_row bg-white">
     <div class="root_column">
       <section class="relative">
-        <div class="testimonial-illu m-hide" aria-hidden="true">
+        <div id="thanks" class="testimonial-illu" aria-hidden="true">
           <div class="emo emo-illu rose">🌹</div>
         </div>
         <div class="testimonial p-6 m-p-2">
           <br class="d-hide">
-          <q class="intro italic">Christian excels at breaking down complex ideas <span class="nowrap">into concrete</span> components, removing all unnecessary elements and assembling them into elegant, <span class="nowrap">well-crafted designs.</span></q>
+          <q class="intro italic" id="testimonial-block"><span>Christian excels at breaking down complex ideas <span class="nowrap">into concrete</span> components, </span><span class="testimonial-part" data-speed="300" data-append="removing all unnecessary elements "></span><span class="testimonial-part" data-speed="10" data-append="and assembling them into elegant, well-crafted designs."></span><button id="testimonial-btn" class="pill btn-inline" aria-label="Mehr anzeigen">➳</button></q>
           <br>
           <br>
           <cite class="flex items-center gap-4">
@@ -145,8 +145,7 @@
   <div class="root_row bg-white">
     <div class="root_column">
       <section class="relative">
-        <h2 class="own">About me</h2>
-        <p class="intro">UI/UX Designer & Frontend Developer. <br>Get a feel and see how I play: <br class="d-hide"><a class="" href="/indices/">browse the index</a>.</p>
+        <h2 class="own">About me</h2>        
 
         <p class="intro">My work starts with analysis and structure and ends with <span class="nowrap">an interface</span> that simply works.</p>
         <p class="intro">To me, code is clear, maintainable and built to last. And design <span class="nowrap">is a</span> conceptual tool that creates orientation, reduces friction and guides the user experience.</p> 
@@ -179,16 +178,35 @@
             </div>
           </div>
 
+          <h3 class="own" aria-hidden="true">&nbsp;</h3>
+          <div class="d-flex items-center mb-1">
+            <span class="intro">Get a feel and see how I play:&nbsp;&nbsp;</span>
+            <br class="d-hide"><br class="d-hide">
+            <a class="btn btn-secondary btn-inline" href="/indices/">
+              <div class="btn_outer">
+                <div class="btn_text-group">
+                  <span class="btn_text select-none">Browse index</span>
+                  <span class="btn_text-roll select-none" aria-hidden="true">Browse index</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <br>
+
       </section>
+    </div>   
+  </div>
+
+  <div class="root_row">
+    <div class="root_column no-border column_full"> 
+      <div id="ball-container" class="canvas" aria-hidden="true">
+      </div>
     </div>   
   </div>
 
   <div class="root_row bg-white">
     <div class="root_column">
-      <section class="relative">
-        <!--div class="contact-illu d-hide" aria-hidden="true">
-          <div class="emo emo-illu mic">🎤</div>
-        </div-->
+      <section>
         <h2 class="own">Your turn.</h2>
         <p class="intro">Wow, I've done all the talking. <span class="nowrap">Who are you?</span></p>
 
@@ -209,12 +227,7 @@
     </div>   
   </div>
 
-  <div class="root_row">
-    <div class="root_column no-border column_full"> 
-      <div id="ball-container" class="canvas" aria-hidden="true">
-      </div>
-    </div>   
-  </div>
+  
 
   <div class="root_row bg-white">
     <div class="root_column">
@@ -224,7 +237,7 @@
                 var d = new Date();
                 var year = d.getFullYear();
                 document.write(year);
-                </script> · Website Version 1.31 · <span class="nowrap" title="Haha, more Public Perpetual Beta">Public beta 🎾</span></small></p>
+                </script> · Website Version 1.32 · <span class="nowrap" title="Haha, more Public Perpetual Beta">Public beta 🎾</span></small></p>
       </section>
     </div>   
   </div>
@@ -238,9 +251,9 @@
 <!--script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/2.0.3/p5.min.js"></script-->
 <script src="assets/js/vendor/p5.js"></script>
 
-<script src="assets/js/blick.js?v=1.31"></script>
-<script src="assets/js/bounce.js?v=1.31"></script>
-<script src="assets/js/ball.js?v=1.31"></script>
+<script src="assets/js/blick.js?v=1.32"></script>
+<script src="assets/js/bounce.js?v=1.32"></script>
+<script src="assets/js/ball.js?v=1.32"></script>
 
 
 

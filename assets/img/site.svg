@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+<path fill="none" stroke="#212125" stroke-width="2" d="M1,9h48"/>
+<g>
+	<circle fill="#212125" cx="5" cy="5" r="1"/>
+	<circle fill="#212125" cx="9" cy="5" r="1"/>
+	<circle fill="#212125" cx="13" cy="5" r="1"/>
+</g>
+<path fill="none" stroke="#212125" stroke-width="2" d="M4,1h42c1.656,0,3,1.343,3,3v42c0,1.656-1.344,3-3,3H4c-1.657,0-3-1.344-3-3
+	V4C1,2.343,2.343,1,4,1z"/>
+</svg>

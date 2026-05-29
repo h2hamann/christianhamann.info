@@ -9,8 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+
 const isAppleEmoji = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent);
 if (isAppleEmoji) document.body.classList.add('apple-emoji');
+
 
 
 function typeText(element, text, index) {
@@ -30,9 +33,8 @@ function typeText(element, text, index) {
             const highlighted = element.querySelector('.highlight');
             if (highlighted) {
                 highlighted.classList.remove('highlight');
-                // Verschmelze mit vorherigem TextNode falls vorhanden
                 const prev = highlighted.previousSibling;
-                if (prev && prev.nodeType === 3) { // TextNode
+                if (prev && prev.nodeType === 3) { 
                     prev.textContent += highlighted.textContent;
                     highlighted.remove();
                 } else {
@@ -41,13 +43,77 @@ function typeText(element, text, index) {
                 }
             }
             typeText(element, text, index + 1);
-        }, 75);
+        }, 50); // speed
     } else {
         element.classList.add('completed');
-        // Optional: Alle TextNodes zusammenfügen
         element.normalize();
     }
 }
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById('testimonial-btn');
+    if (!btn) return;
+
+    const parts = document.querySelectorAll('#testimonial-block .testimonial-part');
+    let currentPhase = 1;
+    let isTyping = false;
+
+    function waitForEngine(element) {
+        return new Promise((resolve) => {
+            const observer = new MutationObserver((mutations, obs) => {
+                if (element.classList.contains('completed')) {
+                    obs.disconnect();
+                    resolve();
+                }
+            });
+            observer.observe(element, { attributes: true, attributeFilter: ['class'] });
+        });
+    }
+
+    btn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        if (isTyping) return;
+
+        if (currentPhase === 1) {
+            isTyping = true;
+            btn.textContent = "➳";
+
+            const target = parts[0];
+            
+            target.classList.add('ani-typed'); 
+            
+            typeText(target, target.getAttribute('data-append'), 0);
+
+            await waitForEngine(target);
+
+            isTyping = false;
+            currentPhase = 2;
+
+        } else if (currentPhase === 2) {
+            isTyping = true;
+            btn.textContent = "";
+            btn.classList.add('is-final');
+            btn.setAttribute('disabled', 'true');
+
+            const target = parts[1];
+            target.classList.add('ani-typed');
+
+            typeText(target, target.getAttribute('data-append'), 0);
+
+            await waitForEngine(target);
+            isTyping = false;
+            currentPhase = 3;
+
+            const thanksEl = document.getElementById('thanks');
+            if (thanksEl) {
+                thanksEl.classList.add('fade-in');
+            }
+        }
+    });
+});
 
 
 document.querySelectorAll(".clickable").forEach(function(box) {
