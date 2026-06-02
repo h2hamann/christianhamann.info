@@ -6,7 +6,7 @@
   <title>🎾 Christian Hamann: Designer / Developer</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Christian Hamann is a designer and developer" />
-  <link rel="stylesheet" type="text/css" href="assets/main.css?v=1.32" />
+  <link rel="stylesheet" type="text/css" href="assets/main.css?v=1.33" />
   <link rel="icon" href="favicon.png">
   <meta name="theme-color" content="#273052">
 </head>
@@ -38,7 +38,7 @@
   <div class="root_row bg-white">
     <div class="root_column relative">      
         <div id="canvas-container" class="canvas" aria-hidden="true">
-          <button id="btn-start" class="btn">
+          <button id="btn-start" class="btn" tabindex="-1">
           <div class="btn_outer">
               <div class="btn_text-group">
                   <span class="btn_text select-none">Click <span class="m-hide">me</span></span>
@@ -128,12 +128,15 @@
         </div>
         <div class="testimonial p-6 m-p-2">
           <br class="d-hide">
-          <q class="intro italic" id="testimonial-block"><span>Christian excels at breaking down complex ideas <span class="nowrap">into concrete</span> components, </span><span class="testimonial-part" data-speed="300" data-append="removing all unnecessary elements "></span><span class="testimonial-part" data-speed="10" data-append="and assembling them into elegant, well-crafted designs."></span><button id="testimonial-btn" class="pill btn-inline" aria-label="Mehr anzeigen">➳</button></q>
+          <q class="intro italic" id="testimonial-block" aria-hidden="true"><span>Christian excels at breaking down complex ideas <span class="nowrap">into concrete</span> components, </span><span class="testimonial-part" data-speed="40" data-append="removing all unnecessary elements "></span><span class="testimonial-part" data-speed="40" data-append="and assembling them into elegant, well-crafted designs."></span><button id="testimonial-btn" class="pill btn-inline" tabindex="-1">➳</button></q>
+
+          <blockquote class="sr-only">Christian excels at breaking down complex ideas into concrete components, removing all unnecessary elements and assembling them into elegant, well-crafted designs.</blockquote>
+
           <br>
           <br>
           <cite class="flex items-center gap-4">
             <span class="photo" aria-hidden="true"><img src="assets/img/max.png" class="" alt="" aria-hidden="true"></span>
-            <span class="author leading-tight">Max Rothberg<br><span class="muted">Marketing & Communications<br>@TurnFriendly</span></span>
+            <span class="author leading-tight">Max Rothberg<br><span class="muted">Marketing & Comm<span class="m-hide">unication</span>s<br>@TurnFriendly</span></span>
           </cite>
         </div>
         <br>
@@ -178,11 +181,11 @@
             </div>
           </div>
 
-          <h3 class="own" aria-hidden="true">&nbsp;</h3>
+          <div class="own" aria-hidden="true">&nbsp;</div>
           <div class="d-flex items-center mb-1">
             <span class="intro">Get a feel and see how I play:&nbsp;&nbsp;</span>
             <br class="d-hide"><br class="d-hide">
-            <a class="btn btn-secondary btn-inline" href="/indices/">
+            <a class="btn btn-secondary btn-inline" href="/indices/" aria-label="Browse the index of work">
               <div class="btn_outer">
                 <div class="btn_text-group">
                   <span class="btn_text select-none">Browse index</span>
@@ -210,7 +213,7 @@
         <h2 class="own">Your turn.</h2>
         <p class="intro">Wow, I've done all the talking. <span class="nowrap">Who are you?</span></p>
 
-        <a class="btn" href="mailto:desk@christianhamann.info.com?subject=Re:%20Hello%20world">
+        <a class="btn" href="mailto:desk@christianhamann.info?subject=Re:%20Hello%20world" aria-label="Say something – send an email">
           <div class="btn_outer">
               <div class="btn_text-group">
                   <span class="btn_text select-none">Say something</span>
@@ -237,7 +240,7 @@
                 var d = new Date();
                 var year = d.getFullYear();
                 document.write(year);
-                </script> · Website Version 1.32 · <span class="nowrap" title="Haha, more Public Perpetual Beta">Public beta 🎾</span></small></p>
+                </script> · Website Version 1.33 · <span class="nowrap" title="Haha, more Public Perpetual Beta">Public beta 🎾</span></small></p>
       </section>
     </div>   
   </div>
@@ -251,9 +254,9 @@
 <!--script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/2.0.3/p5.min.js"></script-->
 <script src="assets/js/vendor/p5.js"></script>
 
-<script src="assets/js/blick.js?v=1.32"></script>
-<script src="assets/js/bounce.js?v=1.32"></script>
-<script src="assets/js/ball.js?v=1.32"></script>
+<script src="assets/js/blick.js?v=1.33"></script>
+<script src="assets/js/bounce.js?v=1.33"></script>
+<script src="assets/js/ball.js?v=1.33"></script>
 
 
 

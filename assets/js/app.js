@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let text = element.dataset.text || element.textContent;
         text = text.replace(/\\n/g, '\n').replace(/\r?\n/g, '\n');
         element.innerHTML = '';
-        typeText(element, text, 0);
+        const speed = parseInt(element.dataset.speed) || 75; // default speed
+        typeText(element, text, 0, speed);
     });
 });
 
@@ -16,10 +17,12 @@ if (isAppleEmoji) document.body.classList.add('apple-emoji');
 
 
 
-function typeText(element, text, index) {
+// Alle Aufrufe: speed mitlesen und übergeben
+function typeText(element, text, index, speed) {
+    const delay = speed ?? parseInt(element.dataset.speed) ?? 75;
+    
     if (index < text.length) {
         const char = text.charAt(index);
-        
         if (char === '\n') {
             element.appendChild(document.createElement('br'));
         } else {
@@ -28,13 +31,13 @@ function typeText(element, text, index) {
             span.className = 'highlight';
             element.appendChild(span);
         }
-        
+
         setTimeout(() => {
             const highlighted = element.querySelector('.highlight');
             if (highlighted) {
                 highlighted.classList.remove('highlight');
                 const prev = highlighted.previousSibling;
-                if (prev && prev.nodeType === 3) { 
+                if (prev && prev.nodeType === 3) {
                     prev.textContent += highlighted.textContent;
                     highlighted.remove();
                 } else {
@@ -42,8 +45,8 @@ function typeText(element, text, index) {
                     highlighted.parentNode.replaceChild(textNode, highlighted);
                 }
             }
-            typeText(element, text, index + 1);
-        }, 50); // speed
+            typeText(element, text, index + 1, delay); // data-speed
+        }, delay);
     } else {
         element.classList.add('completed');
         element.normalize();
@@ -94,23 +97,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
         } else if (currentPhase === 2) {
             isTyping = true;
-            btn.textContent = "";
-            btn.classList.add('is-final');
             btn.setAttribute('disabled', 'true');
 
             const target = parts[1];
             target.classList.add('ani-typed');
+            const speed = parseInt(target.dataset.speed) || 50;
+            typeText(target, target.getAttribute('data-append'), 0, speed);
 
-            typeText(target, target.getAttribute('data-append'), 0);
+            await waitForEngine(target); 
 
-            await waitForEngine(target);
+            btn.textContent = "";
+            btn.classList.add('is-final');
+
             isTyping = false;
             currentPhase = 3;
 
             const thanksEl = document.getElementById('thanks');
-            if (thanksEl) {
-                thanksEl.classList.add('fade-in');
-            }
+            if (thanksEl) thanksEl.classList.add('fade-in');
         }
     });
 });

@@ -3,7 +3,7 @@
 /*
 -----------------------------------------------
 Author:     Christian Hamann
-Version:    25 Mai 2026
+Version:    2 Juni 2026
 src-Folder: 20
 ----------------------------------------------- */
 
@@ -41,6 +41,15 @@ html {
 
 ::selection {
   background-color: var(--theme-yellow);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 
 
@@ -869,7 +878,7 @@ cite .photo img {
 }
 
 .muted {
-  opacity: 0.5 !important;
+  opacity: 0.56 !important;
 }
 
 
@@ -1228,14 +1237,20 @@ body:not(.apple-emoji) .emo-illu {
   transition: background-color 0.3s ease;
 }
 
-.pill:hover {
-  transition: background-color 0s ease;
-  background-color: color-mix(in srgb, var(--theme-yellow) 75%, transparent);
+@media (hover: hover) {
+  .pill:hover {
+    transition: background-color 0s ease;
+    background-color: color-mix(in srgb, var(--theme-yellow) 75%, transparent);
+  }
 }
 
 .pill.is-final {
   display: none;
 }
+
+
+
+
 
 
 
